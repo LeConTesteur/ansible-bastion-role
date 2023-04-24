@@ -99,7 +99,7 @@ bastion_internal_service_port_rules:
     target_port: 389
 bastion_internal_service_ip_rules:
   - name: name.fr
-    ip: Y.Y.Y.Y
+    ip: 1.1.1.253
     target_ip: X.X.X.X
     ports:
       - 80
@@ -144,7 +144,7 @@ Example Playbook
                target_port: 8443
            bastion_internal_service_ip_rules:
              - name: name.fr
-               ip: 1.1.1.9
+               ip: 1.1.1.253
                target_ip: 192.168.122.1
                ports:
                  - 80

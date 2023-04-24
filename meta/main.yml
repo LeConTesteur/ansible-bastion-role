@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: bastion
   author: LeContesteur
   description: Initialise un bastion pour une infra de test
   company: ''

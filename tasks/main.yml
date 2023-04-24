@@ -60,4 +60,3 @@
   ansible.builtin.template:
     src: "after.rules.j2"
     dest: "/etc/ufw/after.rules"
-

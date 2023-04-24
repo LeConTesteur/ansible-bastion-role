@@ -1,4 +1,4 @@
-lecontesteur.infra.Bastion
+lecontesteur.Bastion
 ==========================
 
 Configure un bastion pour isoler une infrastructure de test du monde extèrieur.

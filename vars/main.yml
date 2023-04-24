@@ -1,0 +1,7 @@
+---
+# vars file for bastion
+bastion_internal_ip_eth1:
+bastion_internal_ip_eth1_0:
+bastion_public_port_rules:
+bastion_internal_service_port_rules:
+bastion_internal_service_ip_rules:

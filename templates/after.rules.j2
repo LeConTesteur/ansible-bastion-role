@@ -4,13 +4,13 @@
 :POSTROUTING - [0:0]
 
 {%for rule in bastion_public_port_rules%}
--A PREROUTING -p tcp --destination {{host_ip}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
+-A PREROUTING -p tcp --destination {{bastion_host_ip}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
 -A POSTROUTING -p tcp --destination {{rule.target_ip}} --destination-port {{rule.target_port}} -j MASQUERADE
 {%endfor%}
 
 
 {%for rule in bastion_internal_service_port_rules%}
--A PREROUTING -p tcp --destination {{internal_ip_eth1}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
+-A PREROUTING -p tcp --destination {{bastion_internal_ip_eth1}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
 -A POSTROUTING -p tcp --destination {{rule.target_ip}} --destination-port {{rule.target_port}} -j MASQUERADE
 {%endfor%}
 

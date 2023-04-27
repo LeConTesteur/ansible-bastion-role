@@ -1,0 +1,12 @@
+{
+  "type":"array",
+  "items": {
+    "type": "object",
+    "property": {
+      "name": {"type":"string"},
+      "ip": {"type": "string", "format": "ip-address"},
+      "target_ip": {"type": "string", "format": "ip-address"},
+      "ports": {"type":"array", "items":{"type":"number"}}
+    }
+  }
+}

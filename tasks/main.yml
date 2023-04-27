@@ -1,4 +1,29 @@
 ---
+- name: Validation of IPs required
+  check_mode: true
+  ansible.builtin.assert:
+    that:
+      - lookup('ansible.builtin.vars', item) | ipaddr
+  loop:
+    - bastion_host_ip
+    - bastion_internal_ip_eth1
+    
+- name: Validation of IPs
+  check_mode: true
+  ansible.builtin.assert:
+    that:
+      - lookup('ansible.builtin.vars', item) | ipaddr
+  loop:
+    - bastion_internal_ip_eth1_0
+- name: Validation variable values
+  check_mode: true
+  ansible.utils.validate:
+    data: "{{ lookup('ansible.builtin.vars', item) }}"
+    criteria: "{{ lookup('ansible.builtin.file', './vars_schema_validator/'+item+'.json')}}"
+  loop:
+    - bastion_public_port_rules
+    - bastion_internal_service_port_rules
+    - bastion_internal_service_ip_rules
 - name: send source.list
   ansible.builtin.copy:
     src: sources.list

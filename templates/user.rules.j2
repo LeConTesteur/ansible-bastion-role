@@ -25,16 +25,16 @@
 -A ufw-user-forward -i eth0 -p tcp --dport 22 -j ACCEPT
 
 {%for rule in bastion_public_port_rules%}
-### tuple ### allow tcp {{rule.port}} {{host_ip}} any 0.0.0.0/0 in_eth0
--A ufw-user-input -i eth0 -p tcp -d {{host_ip}} --dport {{rule.port}} -j ACCEPT
+### tuple ### allow tcp {{rule.port}} {{bastion_host_ip}} any 0.0.0.0/0 in_eth0
+-A ufw-user-input -i eth0 -p tcp -d {{bastion_host_ip}} --dport {{rule.port}} -j ACCEPT
 ### tuple ### route:allow tcp {{rule.target_port}} {{rule.target_ip}} any 0.0.0.0/0 in_eth0
 -A ufw-user-forward -i eth0 -p tcp -d {{rule.target_ip}} --dport {{rule.target_port}} -j ACCEPT
 {%endfor%}
 
 
 {%for rule in bastion_internal_service_port_rules%}
-### tuple ### allow tcp {{rule.port}} {{host_ip}} any 0.0.0.0/0 in_eth1
--A ufw-user-input -i eth1 -p tcp -d {{host_ip}} --dport {{rule.port}} -j ACCEPT
+### tuple ### allow tcp {{rule.port}} {{bastion_host_ip}} any 0.0.0.0/0 in_eth1
+-A ufw-user-input -i eth1 -p tcp -d {{bastion_host_ip}} --dport {{rule.port}} -j ACCEPT
 ### tuple ### route:allow tcp {{rule.target_port}} {{rule.target_ip}} any 0.0.0.0/0 in_eth1
 -A ufw-user-forward -i eth1 -p tcp -d {{rule.target_ip}} --dport {{rule.target_port}} -j ACCEPT
 {%endfor%}
